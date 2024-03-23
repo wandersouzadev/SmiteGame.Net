@@ -7,21 +7,28 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{04E8FDFE-E03
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmiteGame.Net.Models", "src\SmiteGame.Net.Models\SmiteGame.Net.Models.csproj", "{7BEC3565-5ACE-4513-A4AD-62DD0CE20D95}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmiteGame.Net", "src\SmiteGame.Net\SmiteGame.Net.csproj", "{05DA7AF5-C1A6-4921-BBC7-E020AE7866B4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{7BEC3565-5ACE-4513-A4AD-62DD0CE20D95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7BEC3565-5ACE-4513-A4AD-62DD0CE20D95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7BEC3565-5ACE-4513-A4AD-62DD0CE20D95}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7BEC3565-5ACE-4513-A4AD-62DD0CE20D95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05DA7AF5-C1A6-4921-BBC7-E020AE7866B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05DA7AF5-C1A6-4921-BBC7-E020AE7866B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05DA7AF5-C1A6-4921-BBC7-E020AE7866B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05DA7AF5-C1A6-4921-BBC7-E020AE7866B4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{7BEC3565-5ACE-4513-A4AD-62DD0CE20D95} = {04E8FDFE-E037-42A4-AACE-4B11C9357A2B}
+		{05DA7AF5-C1A6-4921-BBC7-E020AE7866B4} = {04E8FDFE-E037-42A4-AACE-4B11C9357A2B}
 	EndGlobalSection
 EndGlobal
