@@ -42,6 +42,22 @@ namespace SmiteGame.Net.Apis
             return await HandleResponse<string>(request);
         }
 
+        public async Task<GetDataUsed> GetDataUsed()
+        {
+            string methodName = nameof(GetDataUsed).ToLower();
+            RestRequest request = CreateRequest(methodName);
+            var response = await HandleResponse<IEnumerable<GetDataUsed>>(request);
+            return response.First();
+        }
+
+        public async Task<GetPatchInfo> GetPatchInfo()
+        {
+            string methodName = nameof(GetPatchInfo).ToLower();
+            RestRequest request = CreateRequest(methodName);
+            var response = await HandleResponse<IEnumerable<GetPatchInfo>>(request);
+            return response.First();
+        }
+
         public async Task<HirezServerStatus> GetHirezServerStatus()
         {
             string methodName = nameof(GetHirezServerStatus).ToLower();
