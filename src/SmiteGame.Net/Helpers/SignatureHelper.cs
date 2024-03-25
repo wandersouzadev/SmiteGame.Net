@@ -53,7 +53,7 @@ namespace SmiteGame.Net.Helpers
         {
             string timestamp = GetTimestamp();
             string md5Hash = CreateMD5Hash(
-                hirezCredentials.ApiKey + methodName + hirezCredentials.DevId + timestamp
+                hirezCredentials.DevId + methodName + hirezCredentials.AuthKey + timestamp
             );
             return new Signature(md5Hash, timestamp);
         }

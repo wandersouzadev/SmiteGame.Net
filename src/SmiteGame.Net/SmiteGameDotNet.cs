@@ -13,7 +13,7 @@ namespace SmiteGame.Net
         {
             if (
                 string.IsNullOrWhiteSpace(credentials.DevId)
-                || string.IsNullOrWhiteSpace(credentials.ApiKey)
+                || string.IsNullOrWhiteSpace(credentials.AuthKey)
             )
             {
                 throw new ArgumentNullException(nameof(credentials));
