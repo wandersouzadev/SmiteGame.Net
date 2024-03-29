@@ -8,16 +8,15 @@ namespace SmiteGame.Net.Apis
 {
     public abstract class ApiBase
     {
-        protected RestClient _restClient = new RestClient(
-            "https://api.smitegame.com/smiteapi.svc/"
-        );
-        protected HirezCredentials _credentials;
-        protected ResponseFormat _apiResponseFormat = ResponseFormat.Json;
+        private readonly RestClient _restClient;
+        private readonly HirezCredentials _credentials;
+        private readonly ResponseFormat _apiResponseFormat = ResponseFormat.Json;
 
-        protected string SessionId { get; set; } = string.Empty;
+        protected string? SessionId { get; set; }
 
-        public ApiBase(HirezCredentials credentials)
+        public ApiBase(RestClient restClient, HirezCredentials credentials)
         {
+            _restClient = restClient;
             _credentials = credentials;
         }
 

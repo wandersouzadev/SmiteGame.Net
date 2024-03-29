@@ -8,8 +8,8 @@ namespace SmiteGame.Net.Apis
 {
     public class Other : ApiBase
     {
-        public Other(HirezCredentials credentials)
-            : base(credentials) { }
+        public Other(RestClient restClient, HirezCredentials credentials)
+            : base(restClient, credentials) { }
 
         public async Task<IEnumerable<GetMOTD>> GetMotd()
         {

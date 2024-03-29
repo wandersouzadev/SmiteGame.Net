@@ -1,4 +1,5 @@
 ﻿using System;
+using RestSharp;
 using SmiteGame.Net.Apis;
 using SmiteGame.Net.Configuration;
 
@@ -6,8 +7,10 @@ namespace SmiteGame.Net
 {
     public sealed class SmiteGameDotNet
     {
-        public readonly Connectivity connectivity;
-        public readonly Other other;
+        private readonly RestClient _client = new RestClient(
+            "https://api.smitegame.com/smiteapi.svc/"
+        );
+        private readonly RestRequest _request = new RestRequest();
 
         public SmiteGameDotNet(HirezCredentials credentials)
         {
@@ -18,10 +21,11 @@ namespace SmiteGame.Net
             {
                 throw new ArgumentNullException(nameof(credentials));
             }
-            connectivity = new Connectivity(credentials);
-            other = new Other(credentials);
+            Connectivity = new Connectivity(_client, credentials);
+            Other = new Other(_client, credentials);
         }
 
-        public static string SessionId { get; set; } = string.Empty;
+        public Connectivity Connectivity { get; }
+        public Other Other { get; }
     }
 }

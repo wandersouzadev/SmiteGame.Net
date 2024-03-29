@@ -10,8 +10,8 @@ namespace SmiteGame.Net.Apis
 {
     public class Connectivity : ApiBase
     {
-        public Connectivity(HirezCredentials credentials)
-            : base(credentials) { }
+        public Connectivity(RestClient client, HirezCredentials credentials)
+            : base(client, credentials) { }
 
         public async Task<string> Ping()
         {
