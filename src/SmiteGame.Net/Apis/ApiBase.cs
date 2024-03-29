@@ -22,45 +22,42 @@ namespace SmiteGame.Net.Apis
 
         protected RestRequest CreateSimpleRequest(string resource)
         {
-            RestRequest request = new RestRequest()
-            {
-                Resource = $"{resource}{_apiResponseFormat}"
-            };
-            request.AddHeader("Content-Type", "application/json");
-            return request;
+            return new RestRequest(resource, Method.GET);
         }
 
-        protected RestRequest CreateAuthRequest()
+        protected RestRequest CreateRequest(string resource, params dynamic[] args)
         {
-            Signature signature = HirezSignatureHelper.CreateSignature(
-                _credentials,
-                "createsession"
-            );
-            RestRequest request = new RestRequest()
-            {
-                Resource =
-                    $"createsession{_apiResponseFormat}/{_credentials.DevId}/{signature.Hash}/{signature.Timestamp}"
-            };
-            request.AddHeader("Content-Type", "application/json");
-            return request;
-        }
-
-        protected RestRequest CreateRequest(string resource, params string[] args)
-        {
-            // DEBUG TEST SESSION ID
-#if DEBUG
-            SessionId = "A6AFB1BC6ACA4C08A4189AC64432A513";
-#endif
-
             Signature signature = HirezSignatureHelper.CreateSignature(_credentials, resource);
+            var uri =
+                $"{resource}{_apiResponseFormat}/{_credentials.DevId}/{signature.Hash}{(resource != "createsession" ? "/" + SessionId : "")}/{signature.Timestamp}";
 
-            RestRequest request = new RestRequest()
+            if (args.Length == 0)
             {
-                Resource =
-                    $"{resource}{_apiResponseFormat}/{_credentials.DevId}/{signature.Hash}/{SessionId}/{signature.Timestamp}"
-            };
-            request.AddHeader("Content-Type", "application/json");
-            return request;
+                Console.WriteLine(uri);
+                return new RestRequest(uri, Method.GET);
+            }
+
+            foreach (var arg in args)
+            {
+                Type argType = arg.GetType();
+                string argValue = string.Empty;
+
+                if (argType.IsEnum || arg is int)
+                {
+                    argValue = ((int)arg).ToString();
+                }
+                else if (argType == typeof(string))
+                {
+                    argValue = Uri.EscapeDataString((string)arg);
+                }
+
+                uri += $"/{argValue}";
+            }
+
+            Console.WriteLine(resource);
+            Console.WriteLine(uri);
+
+            return new RestRequest(uri, Method.GET);
         }
 
         protected async Task<T> HandleResponse<T>(RestRequest request)

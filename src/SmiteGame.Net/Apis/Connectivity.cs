@@ -21,7 +21,7 @@ namespace SmiteGame.Net.Apis
 
         public async Task<CreateSession> CreateSession()
         {
-            RestRequest request = CreateAuthRequest();
+            RestRequest request = CreateRequest("createsession");
             var response = await HandleResponse<CreateSession>(request);
             if (
                 response.RetMsg is null
@@ -37,31 +37,26 @@ namespace SmiteGame.Net.Apis
 
         public async Task<string> TestSession()
         {
-            string methodName = nameof(TestSession).ToLower();
-            RestRequest request = CreateRequest(methodName);
+            RestRequest request = CreateRequest("testsession");
             return await HandleResponse<string>(request);
         }
 
         public async Task<GetDataUsed> GetDataUsed()
         {
-            string methodName = nameof(GetDataUsed).ToLower();
-            RestRequest request = CreateRequest(methodName);
+            RestRequest request = CreateRequest("getdataused");
             var response = await HandleResponse<IEnumerable<GetDataUsed>>(request);
             return response.First();
         }
 
         public async Task<GetPatchInfo> GetPatchInfo()
         {
-            string methodName = nameof(GetPatchInfo).ToLower();
-            RestRequest request = CreateRequest(methodName);
-            var response = await HandleResponse<IEnumerable<GetPatchInfo>>(request);
-            return response.First();
+            RestRequest request = CreateRequest("getpatchinfo");
+            return await HandleResponse<GetPatchInfo>(request);
         }
 
         public async Task<HirezServerStatus> GetHirezServerStatus()
         {
-            string methodName = nameof(GetHirezServerStatus).ToLower();
-            RestRequest request = CreateRequest(methodName);
+            RestRequest request = CreateRequest("gethirezserverstatus");
             var response = await HandleResponse<IEnumerable<HirezServerStatus>>(request);
             return response.First();
         }
