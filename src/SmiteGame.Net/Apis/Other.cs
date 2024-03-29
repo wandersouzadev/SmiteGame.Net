@@ -11,18 +11,23 @@ namespace SmiteGame.Net.Apis
         public Other(RestClient restClient, HirezCredentials credentials)
             : base(restClient, credentials) { }
 
-        public async Task<IEnumerable<GetMOTD>> GetMotd()
-        {
-            string methodName = nameof(GetMotd).ToLower();
-            RestRequest request = CreateRequest(methodName);
-            return await HandleResponse<IEnumerable<GetMOTD>>(request);
-        }
-
+        /// <summary>
+        /// Returns the matchup information for each matchup for the current eSports Pro League season.
+        /// An important return value is “match_status” which represents a match being scheduled (1), in-progress (2), or complete (3)
+        /// </summary>
         public async Task<IEnumerable<GetEsportsProLeagueDetails>> GetEsportsProLeagueDetails()
         {
-            string methodName = nameof(GetEsportsProLeagueDetails).ToLower();
-            RestRequest request = CreateRequest(methodName);
+            RestRequest request = CreateRequest("getesportsproleaguedetails");
             return await HandleResponse<IEnumerable<GetEsportsProLeagueDetails>>(request);
+        }
+
+        /// <summary>
+        /// Returns information about the 20 most recent Match-of-the-Days.
+        /// </summary>
+        public async Task<IEnumerable<GetMOTD>> GetMotd()
+        {
+            RestRequest request = CreateRequest("getmotd");
+            return await HandleResponse<IEnumerable<GetMOTD>>(request);
         }
     }
 }

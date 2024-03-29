@@ -13,12 +13,18 @@ namespace SmiteGame.Net.Apis
         public Connectivity(RestClient client, HirezCredentials credentials)
             : base(client, credentials) { }
 
+        /// <summary>
+        /// A quick way of validating access to the Hi-Rez API.
+        /// </summary>
         public async Task<string> Ping()
         {
             RestRequest request = CreateSimpleRequest(nameof(Ping));
             return await HandleResponse<string>(request);
         }
 
+        /// <summary>
+        /// A required step to Authenticate the developerId/signature for further API use.
+        /// </summary>
         public async Task<CreateSession> CreateSession()
         {
             RestRequest request = CreateRequest("createsession");
@@ -35,12 +41,18 @@ namespace SmiteGame.Net.Apis
             return response;
         }
 
+        /// <summary>
+        /// A means of validating that a session is established.
+        /// </summary>
         public async Task<string> TestSession()
         {
             RestRequest request = CreateRequest("testsession");
             return await HandleResponse<string>(request);
         }
 
+        /// <summary>
+        /// Returns API Developer daily usage limits and the current status against those limits.
+        /// </summary>
         public async Task<GetDataUsed> GetDataUsed()
         {
             RestRequest request = CreateRequest("getdataused");
@@ -48,12 +60,18 @@ namespace SmiteGame.Net.Apis
             return response.First();
         }
 
+        /// <summary>
+        /// Function returns information about current deployed patch. Currently, this information only includes patch version.
+        /// </summary>
         public async Task<GetPatchInfo> GetPatchInfo()
         {
             RestRequest request = CreateRequest("getpatchinfo");
             return await HandleResponse<GetPatchInfo>(request);
         }
 
+        /// <summary>
+        /// Function returns UP/DOWN status for the primary game/platform environments.  Data is cached once a minute.
+        /// </summary>
         public async Task<HirezServerStatus> GetHirezServerStatus()
         {
             RestRequest request = CreateRequest("gethirezserverstatus");
