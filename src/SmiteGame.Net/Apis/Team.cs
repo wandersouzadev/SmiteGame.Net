@@ -9,8 +9,8 @@ namespace SmiteGame.Net.Apis
 {
     public class Team : ApiBase
     {
-        public Team(RestClient client, HirezCredentials credentials)
-            : base(client, credentials) { }
+        public Team(RestClient client, HirezCredentials credentials, Options options)
+            : base(client, credentials, options) { }
 
         public async Task<GetTeamDetails> GetTeamDetails(string clanId)
         {

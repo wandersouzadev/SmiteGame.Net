@@ -8,8 +8,8 @@ namespace SmiteGame.Net.Apis
 {
     public class Other : ApiBase
     {
-        public Other(RestClient restClient, HirezCredentials credentials)
-            : base(restClient, credentials) { }
+        public Other(RestClient restClient, HirezCredentials credentials, Options options)
+            : base(restClient, credentials, options) { }
 
         /// <summary>
         /// Returns the matchup information for each matchup for the current eSports Pro League season.

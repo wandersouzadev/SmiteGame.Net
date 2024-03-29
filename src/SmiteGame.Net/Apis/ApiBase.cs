@@ -14,10 +14,11 @@ namespace SmiteGame.Net.Apis
 
         protected string? SessionId { get; set; }
 
-        public ApiBase(RestClient restClient, HirezCredentials credentials)
+        public ApiBase(RestClient restClient, HirezCredentials credentials, Options options)
         {
             _restClient = restClient;
             _credentials = credentials;
+            SessionId = options.SessionId;
         }
 
         protected RestRequest CreateSimpleRequest(string resource)

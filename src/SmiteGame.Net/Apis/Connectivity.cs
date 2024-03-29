@@ -10,8 +10,8 @@ namespace SmiteGame.Net.Apis
 {
     public class Connectivity : ApiBase
     {
-        public Connectivity(RestClient client, HirezCredentials credentials)
-            : base(client, credentials) { }
+        public Connectivity(RestClient client, HirezCredentials credentials, Options options)
+            : base(client, credentials, options) { }
 
         /// <summary>
         /// A quick way of validating access to the Hi-Rez API.

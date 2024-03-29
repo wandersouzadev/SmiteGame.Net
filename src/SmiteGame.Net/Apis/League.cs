@@ -9,8 +9,8 @@ namespace SmiteGame.Net.Apis
 {
     public class League : ApiBase
     {
-        public League(RestClient client, HirezCredentials credentials)
-            : base(client, credentials) { }
+        public League(RestClient client, HirezCredentials credentials, Options options)
+            : base(client, credentials, options) { }
 
         /// <summary>
         /// Returns the top players for a particular league (as indicated by the queue/tier/round parameters).
